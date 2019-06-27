@@ -4,7 +4,6 @@ import XMonad.Actions.Navigation2D
 import XMonad.Config
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
--- import XMonad.Layout.BinarySpacePartition
 import XMonad.Layout.FixedColumn
 import XMonad.Layout.Spacing
 import XMonad.Layout.Grid
@@ -23,7 +22,6 @@ main :: IO ()
 main = do
   xmobarPipe <- spawnPipe xmobarCommand
   xmonad
-    -- $ withNavigation2DConfig def { layoutNavigation = [("BSP", hybridNavigation)] }
     $ myConfig { logHook = dynamicLogWithPP $ myXmobarPP xmobarPipe }
 
 backgroundColor   = "#202020"
@@ -38,13 +36,12 @@ myConfig = def
   , focusFollowsMouse  = False
   , handleEventHook    = docksEventHook
   , keys               = myKeys
-  -- , layoutHook         = avoidStruts $ spacingWithEdge 4 emptyBSP
   , layoutHook         = myLayoutHook
   , manageHook         = manageDocks
   , modMask            = mod4Mask
   , normalBorderColor  = middleColor
   , terminal           = "gnome-terminal"
-  , workspaces         = [ "browse", "emacs", "term", "etc" ]
+  , workspaces         = [ "上網", "emacs", "終端", "etc" ]
   }
 
 myXmobarPP xmobarPipe = defaultPP
