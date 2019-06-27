@@ -1,0 +1,12 @@
+Config
+  { border      = FullB
+  , borderColor = "#202020"
+  , font        = "xft:iosevka:size=11:bold:antialias=true"
+  , position    = Static { xpos = 8, ypos = 8, width = 3824, height = 20 }
+  , template    = "%StdinReader% }{ %date%  "
+  , textOffset  = 14
+  , commands =
+    [ Run StdinReader
+    , Run Date "%Y-%m-%dT%H:%M" "date" 100
+    ]
+}
