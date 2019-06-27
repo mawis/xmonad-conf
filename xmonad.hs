@@ -30,6 +30,7 @@ backgroundColor   = "#202020"
 middleColor       = "#AEAEAE"
 shadedColor       = "#606060"
 foregroundColor   = "#9a2bc2"
+titleColor        = "#2bc26f"
 
 myConfig = def
   { borderWidth        = 4
@@ -52,10 +53,14 @@ myXmobarPP xmobarPipe = defaultPP
   , ppHiddenNoWindows = pad . xmobarColor shadedColor ""
   , ppLayout          = const ""
   , ppOutput          = hPutStrLn xmobarPipe
-  , ppTitle           = const ""
+  , ppTitle           = titleStyle
   , ppVisible         = pad . xmobarColor middleColor ""
   , ppWsSep           = " "
   }
+  where
+    titleStyle = xmobarColor titleColor "" . shorten 100 . filterCurly
+    filterCurly = filter (not . isCurly)
+    isCurly x = x == '{' || x == '}'
 
 xmobarCommand :: String
 xmobarCommand =
