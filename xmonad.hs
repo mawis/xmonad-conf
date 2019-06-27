@@ -26,16 +26,10 @@ main = do
     -- $ withNavigation2DConfig def { layoutNavigation = [("BSP", hybridNavigation)] }
     $ myConfig { logHook = dynamicLogWithPP $ myXmobarPP xmobarPipe }
 
-
--- TODO: Get these colors from xrdb
--- backgroundColor   = "#FEFEFE"
--- middleColor       = "#AEAEAE"
--- foregroundColor   = "#0E0E0E"
-
 backgroundColor   = "#202020"
 middleColor       = "#AEAEAE"
-sharedColor       = "#606060"
-foregroundColor   = "#aaffaa"
+shadedColor       = "#606060"
+foregroundColor   = "#9a2bc2"
 
 myConfig = def
   { borderWidth        = 4
@@ -55,7 +49,7 @@ myConfig = def
 myXmobarPP xmobarPipe = defaultPP
   { ppCurrent         = pad . xmobarColor foregroundColor  ""
   , ppHidden          = pad . xmobarColor middleColor ""
-  , ppHiddenNoWindows = pad . xmobarColor sharedColor ""
+  , ppHiddenNoWindows = pad . xmobarColor shadedColor ""
   , ppLayout          = const ""
   , ppOutput          = hPutStrLn xmobarPipe
   , ppTitle           = const ""
